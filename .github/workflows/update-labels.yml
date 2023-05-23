@@ -12,7 +12,8 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: compare and generate new labels
-        id: compare_labels
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           EXISTING_LABELS=$(gh api repos/${{ github.repository }}/labels --jq '.[].name')
           NEW_LABELS=$(./.github/scripts/generate-labels.sh)
