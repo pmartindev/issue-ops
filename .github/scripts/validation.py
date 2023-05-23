@@ -152,7 +152,7 @@ def auth(args: argparse.Namespace) -> None:
     """
     instance_list = read_yaml(".github/ENTITLEMENTS/github.yml")
     errors = Auth.validate_user(
-        instance_list, args.instance, args.org, args.user
+        instance_list, args.instance, args.org.lower(), args.user
     )
     if errors:
         print(json.dumps(errors))
