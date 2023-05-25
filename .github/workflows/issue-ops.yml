@@ -126,6 +126,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('${{ env.RESULT }}');
             const outcome = JSON.parse('${{ env.RESULT }}');
             const body = `Message: ${outcome.msg}\nStatus: ${outcome.status}`;
             await github.rest.issues.createComment({
